@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #cfdde6;
+}
+
+header {
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    background-color: #082346;
+    color: white;
+    font-family: 'Source Code Pro', monospace;
+}
+
+.calculator-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 3fr;
+    grid-gap: 1em;
+    padding: 1em;
+    height: 570px;
+    width: 400px;
+    background-color: #085c92;
+    border-radius: 8px;
+    margin: auto;
+}
+
+/* Display */
+
+.display-area {
+    background-color: #eee;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.display {
+    display: grid;
+    grid-template-rows: 1fr 3fr;
+    grid-gap: 1em;
+    background-color: #c4d0c6;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: end;
+    font-family: 'Source Code Pro', monospace;
+}
+
+.selection {
+    font-size: 3rem;
+}
+
+.equations {
+    font-size: 1.5rem;
+}
+
+/* Inputs */
+
+.input-area {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    border: 3px solid #c4d0c6;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.number-buttons {
+padding: 5px;
+/* background-color: #ccc; */
+display: grid;
+grid-template-columns: 1fr 1fr 1fr;
+grid-gap: 1rem;
+}
+
+.function-buttons {
+    padding: 5px;
+    margin-left: 15px;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr 3fr;
+    grid-gap: 1rem;
+}
+
+button {
+    font-family: 'Source Code Pro', monospace;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border: 3px solid #082346;
+    transition: all 0.2s ease-in-out;
+}
+
+.digit {
+    background-color: #eeeeec;
+}
+
+.digit:hover {
+    background-color: white;
+    transform: scale(1.1);
+}
+
+.function {
+    background-color: #c72139;
+    color: white;
+    font-weight: bold;
+}
+
+.function:hover {
+    background-color: #e71635;
+    transform: scale(1.1);
+}
+
+footer {
+    text-align: center;
+    width: 100%;
+    height: 25px;
+    margin: auto;
+    background-color: #082346;
+    color: white;
+    font-family: 'Source Code Pro', monospace;
+}
+
+.check {
+    margin: 20px;
+    padding: 10px 20px;
+}
+.check:hover {
+    background-color: #082346;
+    color: white;
+}

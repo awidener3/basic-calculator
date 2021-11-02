@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>The Odin Project | Calculator</title>
+</head>
+<body>
+    <header>
+        <h1>Calculator of Calculation</h1>
+    </header>
+
+    <div class="calculator-container">
+        <div class="section display-area">
+            <div class="display">
+                <div class="equation"> 1 + </div>
+                <div id = "selection" class="selection"></div>
+            </div>
+        </div>
+
+        <div class="section input-area">
+            <div class="number-buttons">
+                <button class="digit">7</button>
+                <button class="digit">8</button>
+                <button class="digit">9</button>
+                <button class="digit">4</button>
+                <button class="digit">5</button>
+                <button class="digit">6</button>
+                <button class="digit">1</button>
+                <button class="digit">2</button>
+                <button class="digit">3</button>
+                <button id="clear" class="function">CLEAR</button>
+                <button class="digit">0</button>
+                <button class="digit">.</button>
+            </div>
+            <div class="function-buttons">
+                <button id="operator" class="function" value="divide">÷</button>
+                <button id="operator" class="function" value="multiply">x</button>
+                <button id="operator" class="function" value="subtract">-</button>
+                <button id="operator" class="function" value="add">+</button>
+                <button id="equals" class="function" value="operate">=</button>
+            </div>
+        </div>
+    </div>
+
+    <button class="check">check!</button>
+
+    <footer>Alex Widener &copy; 2021</footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
