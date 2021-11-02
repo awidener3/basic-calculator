@@ -10,6 +10,13 @@ body {
     background-color: #cfdde6;
 }
 
+.flex-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: space-between;
+}
+
 header {
     padding: 20px;
     margin-bottom: 20px;
@@ -28,6 +35,7 @@ header {
     height: 570px;
     width: 400px;
     background-color: #085c92;
+    /* border: 5px solid #082346; */
     border-radius: 8px;
     margin: auto;
 }
@@ -37,13 +45,13 @@ header {
 .display-area {
     background-color: #eee;
     padding: 10px;
+    margin-top: 20px;
     border-radius: 8px;
 }
 
 .display {
     display: grid;
     grid-template-rows: 1fr 3fr;
-    grid-gap: 1em;
     background-color: #c4d0c6;
     width: 100%;
     height: 100%;
@@ -55,10 +63,7 @@ header {
 
 .selection {
     font-size: 3rem;
-}
-
-.equations {
-    font-size: 1.5rem;
+    height: 60px;
 }
 
 /* Inputs */
@@ -66,17 +71,17 @@ header {
 .input-area {
     display: grid;
     grid-template-columns: 3fr 1fr;
-    border: 3px solid #c4d0c6;
+    /* border: 3px solid #c4d0c6; */
     border-radius: 8px;
     padding: 10px;
 }
 
 .number-buttons {
-padding: 5px;
-/* background-color: #ccc; */
-display: grid;
-grid-template-columns: 1fr 1fr 1fr;
-grid-gap: 1rem;
+    padding: 5px;
+    /* background-color: #ccc; */
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 1rem;
 }
 
 .function-buttons {
@@ -92,7 +97,8 @@ button {
     border-radius: 8px;
     font-size: 1.2rem;
     cursor: pointer;
-    border: 3px solid #082346;
+    /* border: 3px solid #082346; */
+    border: none;
     transition: all 0.2s ease-in-out;
 }
 
@@ -120,7 +126,6 @@ footer {
     text-align: center;
     width: 100%;
     height: 25px;
-    margin: auto;
     background-color: #082346;
     color: white;
     font-family: 'Source Code Pro', monospace;
