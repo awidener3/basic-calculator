@@ -61,7 +61,7 @@ header {
     font-family: 'Source Code Pro', monospace;
 }
 
-.selection {
+.display-value {
     font-size: 3rem;
     height: 60px;
 }
