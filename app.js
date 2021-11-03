@@ -93,9 +93,9 @@ for (let i = 0; i < operator_button.length; i++) {
         } else {
             num2 = num1;
         }
-        operation = this.value; // assign the operator to 'operation'
-        equation_div.textContent = `${num2} ${operation}`; 
+        operation = this.value;
         num1 = '';
+        equation_div.textContent = `${num2} ${operation}`; 
         equals_button.disabled = false;
         decimal_button.disabled = false;
     })
