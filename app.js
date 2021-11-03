@@ -1,7 +1,7 @@
 // Setup
-let num1 = 0;
-let num2;
-let operation;
+let num1 = '';
+let num2 = '';
+let operation = '';
 let displayValue = document.querySelector('.display-value');
 let equation_div = document.querySelector('.equation');
 const clear_button = document.querySelector('#clear')
@@ -11,6 +11,7 @@ const equals_button = document.querySelector('#equals');
 const decimal_button = document.querySelector('.decimal');
 const backspace_button = document.querySelector('#backspace');
 const toggle_button = document.querySelector('#toggle-neg');
+equals_button.disabled = true;
 
 // basic functions
 
@@ -26,6 +27,7 @@ function multiply (a, b) {
 function divide (a, b) {
     return a / b;
 }
+
 function checkForDecimals(result) {
     if (result % 1 != 0) {
         return result.toFixed(2);
@@ -36,32 +38,40 @@ function checkForDecimals(result) {
 
 function operate (operator, num1, num2) {
     equation_div.textContent = '';
-    //num2 = displayValue.textContent;    // assign the current displayed number to num2
+    let result = '';
     switch (operator) {
         case '+':
-            return add(num1, num2);
+            result = add(num1, num2);
+            break;
         case '-':
-            return subtract(num1, num2);
+            result = subtract(num1, num2);
+            break;
         case '*':
-            return multiply(num1, num2);
+            result = multiply(num1, num2);
+            break;
         case '/':
             if (num2 == 0) {
-                return 'ERROR';
+                result = 'ERROR';
             } else {
-                return divide(num1,num2);
+                result = divide(num1,num2);
             } 
+            break;
     }
+    return checkForDecimals(result);
 }
 
 function onPressBackspace() {
-    displayValue.textContent = displayValue.textContent.substring(0, displayValue.textContent.length - 1);
+    num1 = num1.substring(0, num1.length - 1);
+    displayValue.textContent=num1;
 }
 
 function togglePositiveToNegative(num) {
     if (Math.sign(num) >= 0) {
-        displayValue.textContent = -Math.abs(num);
+        num1 = -Math.abs(num);
+        displayValue.textContent = num1;
     } else {
-        displayValue.textContent = Math.abs(num);
+        num1 = Math.abs(num);
+        displayValue.textContent = num1;
     }
 }
 
@@ -69,59 +79,47 @@ function togglePositiveToNegative(num) {
 
 for (let i = 0; i < digit_button.length; i++) {
     digit_button[i].addEventListener('click', function() {
-        displayValue.textContent += this.value;   // add numbers to the displayed number field
-        if (displayValue.textContent.includes('.')) {
-            decimal_button.disabled = true;
-        }
-    })
+        num1 += this.value; 
+        displayValue.textContent = num1;
+    }) 
 }
 
 // OPERATION BUTTONS //
 
 for (let i = 0; i < operator_button.length; i++) {
     operator_button[i].addEventListener('click', function() {
-        num1 = displayValue.textContent;    // set 'num1' to current displayed number
-        equals_button.disabled = false;
-        if (num2 !== undefined) {
+        if (num2 !== '') {
             num2 = operate(operation, num2, num1);
         } else {
             num2 = num1;
         }
-        operation = this.value;             // assign the operator to 'operation'
+        operation = this.value; // assign the operator to 'operation'
         equation_div.textContent = `${num2} ${operation}`; 
-        displayValue.textContent = '';      // reset displayed number to empty
+        num1 = '';
+        equals_button.disabled = false;
         decimal_button.disabled = false;
     })
 }
 
 equals_button.addEventListener('click', function() { 
-    console.log(`operator is: ${operation}, num1 is: ${num1}, num2 is: ${num2}`)
-    console.log(`result of operate() is: ${operate(operation, num1, num2)}`);
-    displayValue.textContent = operate(operation, num1, num2);
-    console.log(`result is ${displayValue.textContent}`)
+    displayValue.textContent = operate(operation, num2, num1);
     equals_button.disabled = true;
 });
 
 // CLEAR BUTTON //
 
 clear_button.addEventListener('click', () => {
-    displayValue.textContent = '';      // reset displayed number to empty
-    equation_div.textContent = '';      // reset equation display
-    num1 = undefined;                      // reset 'a' to undefined
-    num2 = undefined;
-    operation = undefined;              // reset 'operation' to undefined
+    num1 = ''; // reset displayed number to empty
+    num2 = '';
+    operation = ''; // reset 'operation' to undefined
+    displayValue.textContent = num1;
+    equation_div.textContent = ''; // reset equation display
     decimal_button.disabled = false;
-    equals_button.disabled = false;
+    equals_button.disabled = true;
 });
 
 // BACKSPACE BUTTON //
-
-backspace_button.addEventListener('click', function() {
-    onPressBackspace();
-})
+backspace_button.addEventListener('click', () => onPressBackspace());
 
 // TOGGLE POS AND NEG //
-
-toggle_button.addEventListener('click', function() {
-    togglePositiveToNegative(displayValue.textContent);
-})
+toggle_button.addEventListener('click', () => togglePositiveToNegative(num1));
