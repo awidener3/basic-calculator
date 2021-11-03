@@ -97,9 +97,12 @@ button {
     border-radius: 8px;
     font-size: 1.2rem;
     cursor: pointer;
-    /* border: 3px solid #082346; */
     border: none;
     transition: all 0.2s ease-in-out;
+}
+
+#backspace {
+    grid-column: 2/4;
 }
 
 .digit {
