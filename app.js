@@ -18,8 +18,8 @@ function add (a, b) {
     return Number(a) + Number(b); // convert returned strings as numbers before adding
 }
 function subtract (a, b) {
-    return a - b;}
-
+    return a - b;
+}
 function multiply (a, b) {
     return a * b;
 }
@@ -34,27 +34,20 @@ function checkForDecimals(result) {
     }
 }
 
-// calculator functionality
-
 function operate (operator, num1, num2) {
     equation_div.textContent = '';
-    num2 = displayValue.textContent;    // assign the current displayed number to num2
+    //num2 = displayValue.textContent;    // assign the current displayed number to num2
     switch (operator) {
         case '+':
-            displayValue.textContent = checkForDecimals(add(num1,num2));
             return add(num1, num2);
         case '-':
-            displayValue.textContent = checkForDecimals(subtract(num1,num2));
             return subtract(num1, num2);
         case '*':
-            displayValue.textContent = checkForDecimals(multiply(num1,num2));
             return multiply(num1, num2);
         case '/':
             if (num2 == 0) {
-                displayValue.textContent = 'ERROR';
                 return 'ERROR';
             } else {
-                displayValue.textContent = checkForDecimals(divide(num1, num2));
                 return divide(num1,num2);
             } 
     }
@@ -76,8 +69,7 @@ function togglePositiveToNegative(num) {
 
 for (let i = 0; i < digit_button.length; i++) {
     digit_button[i].addEventListener('click', function() {
-        displayValue.textContent += this.textContent;   // add numbers to the displayed number field
-        // disable decimal button if a decimal is present
+        displayValue.textContent += this.value;   // add numbers to the displayed number field
         if (displayValue.textContent.includes('.')) {
             decimal_button.disabled = true;
         }
@@ -92,11 +84,9 @@ for (let i = 0; i < operator_button.length; i++) {
         equals_button.disabled = false;
         if (num2 !== undefined) {
             num2 = operate(operation, num2, num1);
-            
         } else {
             num2 = num1;
         }
-        
         operation = this.value;             // assign the operator to 'operation'
         equation_div.textContent = `${num2} ${operation}`; 
         displayValue.textContent = '';      // reset displayed number to empty
@@ -105,8 +95,11 @@ for (let i = 0; i < operator_button.length; i++) {
 }
 
 equals_button.addEventListener('click', function() { 
-    operate(operation, num1, num2);
-    equals_button.disabled=true;
+    console.log(`operator is: ${operation}, num1 is: ${num1}, num2 is: ${num2}`)
+    console.log(`result of operate() is: ${operate(operation, num1, num2)}`);
+    displayValue.textContent = operate(operation, num1, num2);
+    console.log(`result is ${displayValue.textContent}`)
+    equals_button.disabled = true;
 });
 
 // CLEAR BUTTON //
