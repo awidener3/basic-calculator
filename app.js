@@ -98,12 +98,16 @@ for (let i = 0; i < operator_button.length; i++) {
         equation_div.textContent = `${num2} ${operation}`; 
         equals_button.disabled = false;
         decimal_button.disabled = false;
+        digit_button.forEach(digit_button => digit_button.disabled = false);
     })
 }
 
 equals_button.addEventListener('click', function() { 
     displayValue.textContent = operate(operation, num2, num1);
+    num1 = displayValue.textContent;
+    num2 = '';
     equals_button.disabled = true;
+    digit_button.forEach(digit_button => digit_button.disabled = true);
 });
 
 // CLEAR BUTTON //
@@ -116,6 +120,7 @@ clear_button.addEventListener('click', () => {
     equation_div.textContent = ''; // reset equation display
     decimal_button.disabled = false;
     equals_button.disabled = true;
+    digit_button.forEach(digit_button => digit_button.disabled = false);
 });
 
 // BACKSPACE BUTTON //
