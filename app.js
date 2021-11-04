@@ -51,7 +51,7 @@ function operate (operator, num1, num2) {
             break;
         case '/':
             if (num2 == 0) {
-                result = 'ERROR';
+                return 'ERROR';
             } else {
                 result = divide(num1,num2);
             } 
