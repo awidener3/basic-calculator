@@ -81,6 +81,9 @@ for (let i = 0; i < digit_button.length; i++) {
     digit_button[i].addEventListener('click', function() {
         num1 += this.value; 
         displayValue.textContent = num1;
+        if (num1.includes('.')) {
+            decimal_button.disabled = true;
+        }
     }) 
 }
 
@@ -124,7 +127,12 @@ clear_button.addEventListener('click', () => {
 });
 
 // BACKSPACE BUTTON //
-backspace_button.addEventListener('click', () => onPressBackspace());
+backspace_button.addEventListener('click', () => {
+    onPressBackspace();
+    if (num1.includes('.') == false) {
+        decimal_button.disabled = false;
+    }
+});
 
 // TOGGLE POS AND NEG //
 toggle_button.addEventListener('click', () => togglePositiveToNegative(num1));
